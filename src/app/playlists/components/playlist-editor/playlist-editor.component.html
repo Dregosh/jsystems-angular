@@ -10,8 +10,8 @@
     class="form-control"
     id="exampleFormControlInput1"
     placeholder="Name"
-    
-    [value]="playlist.name"
+
+    [ngModel]="playlist.name"
     (input)="playlist.name = $any($event).currentTarget.value"
   />
 </div>

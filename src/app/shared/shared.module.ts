@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClockComponent } from './clock/clock.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,10 +10,12 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     PageNotFoundComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
-    ClockComponent
+    ClockComponent,
+    FormsModule
   ]
 })
 export class SharedModule { }
