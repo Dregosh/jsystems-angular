@@ -1,1 +1,8 @@
-<p>clock works!</p>
+<p (click)="update()">
+  {{ time }}
+</p>
+
+<!-- <input type="text" #myInputRef (keyup)="{}"> -->
+<input type="text" #myInputRef>
+
+Value : {{ myInputRef.value }}

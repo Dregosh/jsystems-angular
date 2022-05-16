@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clock.component.scss']
 })
 export class ClockComponent implements OnInit {
+  time = ''
 
-  constructor() { }
+  update() {
+    this.time = (new Date()).toLocaleTimeString()
+    // this.myInputRef // Property 'myInputRef' does not exist 
+  }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.update()
   }
 
 }
