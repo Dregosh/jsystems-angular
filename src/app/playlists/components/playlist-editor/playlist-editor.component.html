@@ -9,8 +9,10 @@
     type="text"
     class="form-control"
     id="exampleFormControlInput1"
-    [value]="playlist.name"
     placeholder="Name"
+    
+    [value]="playlist.name"
+    (input)="playlist.name = $any($event).currentTarget.value"
   />
 </div>
 
