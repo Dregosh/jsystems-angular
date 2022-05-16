@@ -7,15 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistsViewComponent implements OnInit {
 
-  mode = 'details'
+  mode: 'editor' | 'details' = 'details'
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  edit() { }
-  
-  cancel() { }
+  edit() {
+    this.mode = 'editor'
+  }
+
+  cancel() {
+    this.mode = 'details'
+  }
 
 }
