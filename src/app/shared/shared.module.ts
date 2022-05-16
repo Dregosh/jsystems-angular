@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports: [
+    CommonModule,
     ClockComponent,
     FormsModule
   ]
