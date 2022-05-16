@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-clock',
@@ -13,16 +13,20 @@ export class ClockComponent implements OnInit {
     this.time = (new Date()).toLocaleTimeString()
   }
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(
+    private zone: NgZone,
+    private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
     this.update()
 
-    setInterval(() => {
-      this.update()
-      this.cdr.detectChanges()
-    }, 1_000)
+    this.zone.runOutsideAngular(() => {
+      setInterval(() => {
+        this.update()
+        this.cdr.detectChanges()
+      }, 1_000)
+    })
   }
 
 }
