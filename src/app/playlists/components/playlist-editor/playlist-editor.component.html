@@ -3,6 +3,8 @@
 <!-- <pre>{{ playlist | json | uppercase }}</pre> -->
 <pre>{{ playlist | json }}</pre>
 
+<!-- <div ngModel></div> -->
+
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label"> Name:</label>
   <input
@@ -10,16 +12,18 @@
     class="form-control"
     id="exampleFormControlInput1"
     placeholder="Name"
-
-    [ngModel]="playlist.name"
+    
+    ngModel
     (ngModelChange)="playlist.name = $event"
+  />
 
-    />
-    
-    <!-- [Abc]="zmienna" -->
-    <!-- (AbcChange)="zmienna = $event" -->
-    
-    <!-- [(Abc)] = "zmienna" -->
+  <!-- [ngModel]="playlist.name" -->
+  <!-- (ngModelChange)="playlist.name = $event" -->
+
+  <!-- [Abc]="zmienna" -->
+  <!-- (AbcChange)="zmienna = $event" -->
+
+  <!-- [(Abc)] = "zmienna" -->
 
   <!-- (input)="playlist.name = $any($event).currentTarget.value" -->
 </div>
