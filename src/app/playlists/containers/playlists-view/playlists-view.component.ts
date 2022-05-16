@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistsViewComponent implements OnInit {
 
+  mode = 'details'
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  edit() { }
+  
+  cancel() { }
 
 }
