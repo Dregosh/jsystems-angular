@@ -1,17 +1,26 @@
 <p>playlist-editor works!</p>
 
+<!-- <pre>{{ playlist | json | uppercase }}</pre> -->
+<pre>{{ playlist | json }}</pre>
+
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label"> Name:</label>
   <input
     type="text"
     class="form-control"
     id="exampleFormControlInput1"
+    [value]="playlist.name"
     placeholder="Name"
   />
 </div>
 
 <div class="form-check mb-3">
-  <input class="form-check-input" type="checkbox" id="flexCheckDefault" />
+  <input
+    class="form-check-input"
+    type="checkbox"
+    id="flexCheckDefault"
+    [checked]="playlist.public"
+  />
   <label class="form-check-label" for="flexCheckDefault"> Public </label>
 </div>
 
@@ -23,6 +32,7 @@
     class="form-control"
     placeholder="Description"
     id="exampleFormControlTextarea1"
+    [value]="playlist.description"
     rows="3"
   ></textarea>
 </div>
