@@ -5,9 +5,7 @@
   {{ 1 + 2 > 3 ? 'prawda' : 'falsz '}} 
 -->
 
-<dl [title]="'playlist_' + playlist.id"
-    [attr.data-playlist-id]="playlist.id"
->
+<dl [title]="'playlist_' + playlist.id" [attr.data-playlist-id]="playlist.id">
   <dt>Name:</dt>
   <dd>{{ playlist.name }}</dd>
 
@@ -30,8 +28,8 @@
   <dd
     class="trzecia_klasa"
     [ngClass]="{
-      public: playlist.public === true,
-      private: playlist.public === false
+      public: playlist.public,
+      private: !playlist.public
     }"
   >
     {{ playlist.public ? "Yes" : "No" }}
