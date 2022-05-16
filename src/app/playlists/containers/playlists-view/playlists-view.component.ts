@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 type ModeTypes = 'editor' | 'details';
+enum mods { editor, details }
 
 @Component({
   selector: 'app-playlists-view',
@@ -8,6 +9,8 @@ type ModeTypes = 'editor' | 'details';
   styleUrls: ['./playlists-view.component.scss']
 })
 export class PlaylistsViewComponent implements OnInit {
+  // mods = mods
+
   mode: ModeTypes = 'details'
 
   constructor() { }
