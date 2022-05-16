@@ -43,4 +43,9 @@ npm install
 npm start
 
 
+## Schematics 
+
+ng g m shared -m app
+ng g c shared/clock --export
+
 
