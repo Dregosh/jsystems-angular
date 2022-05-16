@@ -48,4 +48,13 @@ npm start
 ng g m shared -m app
 ng g c shared/clock --export
 
+## Playlists module
+
+ng g m playlists -m app --routing --route "playlists"
+
+ng g c playlists/containers/playlists-view
+
+ng g c playlists/components/playlist-list
+ng g c playlists/components/playlist-details
+ng g c playlists/components/playlist-editor
 
