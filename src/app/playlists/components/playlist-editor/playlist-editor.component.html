@@ -1,55 +1,43 @@
-<p>playlist-editor works!</p>
+<form>
+  <!-- If ngModel is used within a form tag, either the name attribute must be set or the form
+    control must be defined as 'standalone' in ngModelOptions. -->
 
-<!-- <pre>{{ playlist | json | uppercase }}</pre> -->
-<pre>{{ playlist | json }}</pre>
+  <pre>{{ playlist | json }}</pre>
 
-<!--  Error: No value accessor -->
-<!-- <div ngModel></div> -->
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label"> Name:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="Name"
+      [(ngModel)]="playlist.name"
+      name="name"
+    />
+  </div>
 
+  <div class="form-check mb-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="flexCheckDefault"
+      [(ngModel)]="playlist.public"
+      name="public"
+    />
+    <label class="form-check-label" for="flexCheckDefault"> Public </label>
+  </div>
 
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label"> Name:</label>
-  <input
-    type="text"
-    class="form-control"
-    id="exampleFormControlInput1"
-    placeholder="Name"
-    [(ngModel)]="playlist.name"
-  />
-
-  <!--     
-    ngModel
-    (ngModelChange)="playlist.name = $event" -->
-  <!-- [ngModel]="playlist.name" -->
-  <!-- (ngModelChange)="playlist.name = $event" -->
-
-  <!-- [Abc]="zmienna" -->
-  <!-- (AbcChange)="zmienna = $event" -->
-
-  <!-- [(Abc)] = "zmienna" -->
-
-  <!-- (input)="playlist.name = $any($event).currentTarget.value" -->
-</div>
-
-<div class="form-check mb-3">
-  <input
-    class="form-check-input"
-    type="checkbox"
-    id="flexCheckDefault"
-    [(ngModel)]="playlist.public"
-  />
-  <label class="form-check-label" for="flexCheckDefault"> Public </label>
-</div>
-
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label"
-    >Description</label
-  >
-  <textarea
-    class="form-control"
-    placeholder="Description"
-    id="exampleFormControlTextarea1"
-    [(ngModel)]="playlist.description"
-    rows="3"
-  ></textarea>
-</div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"
+      >Description</label
+    >
+    <textarea
+      class="form-control"
+      placeholder="Description"
+      id="exampleFormControlTextarea1"
+      [(ngModel)]="playlist.description"
+      name="description"
+      rows="3"
+    ></textarea>
+  </div>
+</form>
