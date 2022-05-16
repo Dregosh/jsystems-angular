@@ -11,7 +11,16 @@
 
   <dt>Public:</dt>
 
-  <dd [style.color]="playlist.public ? 'red' : 'green'">
+  <!-- <dd
+    [style.color]="playlist.public ? 'red' : 'green'"
+    [style.borderBottom]="'1px solid '"
+  > -->
+  <dd
+    [ngStyle]="{
+      color: playlist.public ? 'red' : 'green',
+      borderBottom: playlist.public ? 'red' : 'green'
+    }"
+  >
     {{ playlist.public ? "Yes" : "No" }}
   </dd>
 
