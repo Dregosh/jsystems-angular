@@ -23,8 +23,24 @@ chrome://version
 npm install -g @angular/cli
 
 ng --version
-ng
 ng help 
+ng
 ng new --help
 
 ## New Project Workspace
+ng new --directory "." 
+? What name would you like to use for the new workspace and initial project? jsystems
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? SCSS   [ https://sass-lang.com/documentation/syntax#scss       
+
+
+## GIT 
+cd katalog_roboczy/
+
+git clone https://bitbucket.org/ev45ive/jsystems-angular-maj.git jsystems-angular-maj
+cd jsystems-angular-maj
+npm install
+npm start
+
+
+

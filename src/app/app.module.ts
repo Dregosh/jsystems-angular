@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
+    // SuperHiperDataGridDatePicker
     BrowserModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [/* HeaderComponent,FooterComponents, */AppComponent]
 })
 export class AppModule { }
