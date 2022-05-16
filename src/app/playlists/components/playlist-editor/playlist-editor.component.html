@@ -10,10 +10,16 @@
     class="form-control"
     id="exampleFormControlInput1"
     placeholder="Name"
-    
+
     [ngModel]="playlist.name"
     (ngModelChange)="playlist.name = $event"
-  />
+
+    />
+    
+    <!-- [Abc]="zmienna" -->
+    <!-- (AbcChange)="zmienna = $event" -->
+    
+    <!-- [(Abc)] = "zmienna" -->
 
   <!-- (input)="playlist.name = $any($event).currentTarget.value" -->
 </div>
