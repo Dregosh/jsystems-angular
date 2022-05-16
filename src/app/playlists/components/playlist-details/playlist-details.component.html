@@ -15,10 +15,20 @@
     [style.color]="playlist.public ? 'red' : 'green'"
     [style.borderBottom]="'1px solid '"
   > -->
-  <dd
+  <!-- <dd
     [ngStyle]="{
       color: playlist.public ? 'red' : 'green',
       borderBottom: playlist.public ? 'red' : 'green'
+    }"
+  > -->
+  <!-- <dd
+    [class.public]="playlist.public"
+    [class.private]="playlist.public === false"
+  > -->
+  <dd
+    [ngClass]="{
+      public: playlist.public === true,
+      private: playlist.public === false
     }"
   >
     {{ playlist.public ? "Yes" : "No" }}
