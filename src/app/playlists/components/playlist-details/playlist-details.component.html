@@ -5,7 +5,9 @@
   {{ 1 + 2 > 3 ? 'prawda' : 'falsz '}} 
 -->
 
-<dl>
+<dl [title]="'playlist_' + playlist.id"
+    [attr.data-playlist-id]="playlist.id"
+>
   <dt>Name:</dt>
   <dd>{{ playlist.name }}</dd>
 
@@ -26,6 +28,7 @@
     [class.private]="playlist.public === false"
   > -->
   <dd
+    class="trzecia_klasa"
     [ngClass]="{
       public: playlist.public === true,
       private: playlist.public === false
