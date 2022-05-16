@@ -35,12 +35,17 @@ ng new --directory "."
 
 
 ## GIT 
-cd katalog_roboczy/
+cd gdzie_chcemy_pobrac/
+
+cd ..
 
 git clone https://bitbucket.org/ev45ive/jsystems-angular-maj.git jsystems-angular-maj
 cd jsystems-angular-maj
+
 npm install
 npm start
+
+File => Open Folder => jsystems-angular-maj
 
 ## VS Code Extensions
 
