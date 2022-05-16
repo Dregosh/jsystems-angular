@@ -42,7 +42,7 @@ cd jsystems-angular-maj
 npm install
 npm start
 
-
+ 
 ## Schematics 
 
 ng g m shared -m app
