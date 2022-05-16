@@ -42,6 +42,14 @@ cd jsystems-angular-maj
 npm install
 npm start
 
+## VS Code Extensions
+
+Angular Language Service
+https://marketplace.visualstudio.com/items?itemName=Angular.ng-template
+
+Angular 10 Snippets
+https://marketplace.visualstudio.com/items?itemName=Mikael.Angular-BeastCode
+
  
 ## Schematics 
 
