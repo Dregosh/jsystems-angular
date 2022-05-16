@@ -1,8 +1,9 @@
-<form>
+<form #formRef="ngForm">
   <!-- If ngModel is used within a form tag, either the name attribute must be set or the form
     control must be defined as 'standalone' in ngModelOptions. -->
 
   <pre>{{ playlist | json }}</pre>
+  <pre>{{ formRef.value | json }}</pre>
 
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label"> Name:</label>
@@ -39,5 +40,18 @@
       name="description"
       rows="3"
     ></textarea>
+  </div>
+
+  <div ngModelGroup="extras">
+    <div class="form-check mb-3">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="flexCheckDefault"
+        ngModel
+        name="collaborative"
+      />
+      <label class="form-check-label" for="flexCheckDefault"> Collaborative </label>
+    </div>
   </div>
 </form>
