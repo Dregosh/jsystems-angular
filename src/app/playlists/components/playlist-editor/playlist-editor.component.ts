@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-playlist-editor',
@@ -12,6 +12,17 @@ export class PlaylistEditorComponent implements OnInit {
     name: "",
     public: false,
     description: ''
+  }
+
+  @Output() save = new EventEmitter();
+  @Output() cancel = new EventEmitter();
+
+  cancelClick() {
+    this.cancel.emit()
+  }
+
+  submit() {
+    this.save.emit(this.playlist)
   }
 
   constructor() { }

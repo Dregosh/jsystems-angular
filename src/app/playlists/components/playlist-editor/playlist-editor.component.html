@@ -28,20 +28,6 @@
     <label class="form-check-label" for="flexCheckDefault"> Public </label>
   </div>
 
-  <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label"
-      >Description</label
-    >
-    <textarea
-      class="form-control"
-      placeholder="Description"
-      id="exampleFormControlTextarea1"
-      [(ngModel)]="playlist.description"
-      name="description"
-      rows="3"
-    ></textarea>
-  </div>
-
   <div ngModelGroup="extras">
     <div class="form-check mb-3">
       <input
@@ -56,9 +42,24 @@
       </label>
     </div>
   </div>
+  
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"
+      >Description</label
+    >
+    <textarea
+      class="form-control"
+      placeholder="Description"
+      id="exampleFormControlTextarea1"
+      [(ngModel)]="playlist.description"
+      name="description"
+      rows="3"
+    ></textarea>
+  </div>
 
   <div>
-    <button class="btn btn-success" (click)="({})">Save</button>
-    <button class="btn btn-danger" (click)="({})">Cancel</button>
+    <button class="btn btn-success" (click)="submit()">Save</button>
+
+    <button class="btn btn-danger" (click)="cancelClick()">Cancel</button>
   </div>
 </form>

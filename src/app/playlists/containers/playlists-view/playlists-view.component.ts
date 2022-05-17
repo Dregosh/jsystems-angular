@@ -40,16 +40,7 @@ export class PlaylistsViewComponent implements OnInit {
     }
   }
 
-  constructor() {
-    // if (this.mode === 'details') {
-    //   this.mode /// details
-    // } else if (this.mode === 'editor') {
-    //   this.mode
-    // } else {
-    //   this.mode // never
-    // }
-
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -62,4 +53,7 @@ export class PlaylistsViewComponent implements OnInit {
     this.mode = 'details'
   }
 
+  updatePlaylist(draft: Playlist) {
+    console.log(draft);
+  }
 }

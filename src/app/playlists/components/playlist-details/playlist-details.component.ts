@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Playlist } from 'src/app/core/model/Playlist';
 
 @Component({
@@ -9,6 +9,12 @@ import { Playlist } from 'src/app/core/model/Playlist';
 export class PlaylistDetailsComponent implements OnInit {
 
   @Input() playlist?: Playlist
+
+  @Output() edit = new EventEmitter();
+
+  editClick() {
+    this.edit.emit()
+  }
 
   constructor() { }
 

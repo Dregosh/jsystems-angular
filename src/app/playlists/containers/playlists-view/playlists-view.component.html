@@ -17,15 +17,16 @@
     <ng-container [ngSwitch]="mode">
       <app-playlist-details
         [playlist]="selected"
+        (edit)="edit()"
         *ngSwitchDefault
       ></app-playlist-details>
 
       <app-playlist-editor
+        (cancel)="cancel()"
+        (save)="updatePlaylist($event)"
         [playlist]="selected"
         *ngSwitchCase="'editor'"
       ></app-playlist-editor>
     </ng-container>
-
-   
   </div>
 </div>
