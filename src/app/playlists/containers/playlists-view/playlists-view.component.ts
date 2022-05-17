@@ -55,10 +55,6 @@ export class PlaylistsViewComponent implements OnInit {
   updatePlaylist(draft: Playlist) {
     console.log(draft);
 
-    // const index = this.playlists.findIndex(p => p.id === draft.id)
-    // this.playlists[index] = draft;
-
-    // Immutable copy with shared references
     this.playlists = this.playlists.map(
       p => p.id === draft.id ? draft : p
     )
