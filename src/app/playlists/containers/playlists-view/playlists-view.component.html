@@ -2,6 +2,14 @@
   <div class="col-12 col-sm-6">
     <app-playlist-list
       [items]="playlists"
+      [selectedId]="selectedId"
+      (selectedIdChange)="selectPlaylist($event)"
+    >
+    </app-playlist-list>
+
+    <app-playlist-list
+      [items]="playlists"
+      [selectedId]="selectedId"
       (selectedIdChange)="selectPlaylist($event)"
     >
     </app-playlist-list>

@@ -8,7 +8,7 @@ import { Playlist } from '../../../core/model/Playlist';
 })
 export class PlaylistListComponent implements OnInit {
 
-  selectedId = '234'
+  @Input() selectedId = ''
 
   @Input('items') playlists: Playlist[] = []
 
