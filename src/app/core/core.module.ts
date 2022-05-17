@@ -13,10 +13,7 @@ import { API_URL } from './tokens';
       provide: API_URL,
       useValue: environment.api_url
     },
-    {
-      provide: API_URL,
-      useValue: 'http://localhost:3000/api/'
-    },
+    
   ]
 })
 export class CoreModule { }
