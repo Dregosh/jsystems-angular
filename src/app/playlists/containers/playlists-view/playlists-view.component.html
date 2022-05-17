@@ -10,8 +10,12 @@
 
     {{ mode }}
 
-    <app-playlist-details [hidden]="mode !== 'details'"></app-playlist-details>
+    <ng-template [ngIf]="mode === 'details'">
+      <app-playlist-details></app-playlist-details>
+    </ng-template>
 
-    <app-playlist-editor [hidden]="mode !== 'editor'"></app-playlist-editor>
+    <ng-template [ngIf]="mode === 'editor'">
+      <app-playlist-editor></app-playlist-editor>
+    </ng-template>
   </div>
 </div>
