@@ -8,13 +8,14 @@
       <button class="btn btn-danger" (click)="cancel()">Cancel</button>
     </div>
 
+    <!-- Error: NG02000: An element with the "ngSwitchCase" attribute (matching the "NgSwitchCase" directive) must be located inside an element with the "ngSwitch" attribute (matching "NgSwitch" directive) -->
+    <!-- <app-playlist-details *ngSwitchCase="'details'"></app-playlist-details> -->
+    
     <!--  *  []  {{ }}  ( )  #  -->
-
-    <ng-container ngSwitch="mode">
-      <app-playlist-details ngSwitchCase="details"></app-playlist-details>
-      <app-playlist-editor ngSwitchCase="editor"></app-playlist-editor>
+    <ng-container [ngSwitch]="mode">
+      <app-playlist-details *ngSwitchDefault></app-playlist-details>
+      <app-playlist-editor *ngSwitchCase="'editor'"></app-playlist-editor>
     </ng-container>
-
   </div>
 </div>
 
