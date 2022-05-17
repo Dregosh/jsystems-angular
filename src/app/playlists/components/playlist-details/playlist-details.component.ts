@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Playlist } from 'src/app/core/model/Playlist';
 
 @Component({
@@ -9,7 +9,7 @@ import { Playlist } from 'src/app/core/model/Playlist';
 export class PlaylistDetailsComponent implements OnInit {
 
   /* TODO: selected playlist */
-  playlist: Playlist = {
+  @Input() playlist: Playlist = {
     id: '123',
     name: "Playlista ABC",
     public: false,

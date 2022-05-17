@@ -10,7 +10,6 @@ export class PlaylistsViewComponent implements OnInit {
 
   mode: 'editor' | 'details' = 'details'
 
-  selectedId = '234'
 
   playlists: Playlist[] = [
     {
@@ -30,6 +29,7 @@ export class PlaylistsViewComponent implements OnInit {
       description: 'fav playlist'
     }
   ]
+  selectedId = '234'
   selected: Playlist = this.playlists[1]
 
   constructor() {
