@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { mockAlbums } from '../../mocks/mockAlbums';
 import { API_URL } from '../../tokens';
 import { HttpClient } from '@angular/common/http'
+import { Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,19 @@ export class MusicApiService {
   fetchAlbumSearchResults(query = '') {
     console.log(this.api_url);
 
-    this.http.get(this.api_url + 'search', {
+    const obs: Observable<Object> = this.http.get(this.api_url + 'search', {
       params: {
         type: 'album', query
       }
+    })
+
+    const sub: Subscription = obs.subscribe(console.log)
+          sub.unsubscribe()
+
+    obs.subscribe({
+      next: res => console.log(res),
+      error: res => console.log(res),
+      complete: () => console.log('complete'),
     })
 
     return mockAlbums
