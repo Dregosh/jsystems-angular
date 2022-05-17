@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistListComponent implements OnInit {
 
+  selectedId = '234'
+
   playlists = [{
     id: '123',
     name: "Playlista 123",
@@ -23,6 +25,10 @@ export class PlaylistListComponent implements OnInit {
     public: false,
     description: 'fav playlist'
   }]
+
+  select(id: string) {
+    // TODO:
+  }
 
   constructor() { }
 
