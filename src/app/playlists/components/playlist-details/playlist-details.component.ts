@@ -11,12 +11,14 @@ export class PlaylistDetailsComponent implements OnInit {
   /* TODO: selected playlist */
   // @Input() playlist: Playlist // error
   // @Input() playlist: Playlist | undefined
-  
+  // @Input() playlist!: Playlist
   @Input() playlist?: Playlist
+  
 
   constructor() { }
 
   ngOnInit(): void {
+    if(!this.playlist) throw new Error('missing input')
   }
 
 }

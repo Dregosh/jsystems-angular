@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PlaylistEditorComponent implements OnInit {
 
-  @Input() playlist = {
+  @Input() playlist? = {
     id: '123',
     name: "Playlista ABC",
     public: false,

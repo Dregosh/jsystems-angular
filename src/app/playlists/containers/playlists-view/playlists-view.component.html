@@ -6,19 +6,13 @@
       (selectedIdChange)="selectPlaylist($event)"
     >
     </app-playlist-list>
+ 
 
-    <app-playlist-list
-      [items]="playlists"
-      [selectedId]="selectedId"
-      (selectedIdChange)="selectPlaylist($event)"
-    >
-    </app-playlist-list>
-
-    <input
+    <!-- <input
       type="text"
       (input)="playlists[0].name = $any($event).target.value"
       [value]="playlists[0].name"
-    />
+    /> -->
   </div>
   <div class="col-12 col-sm-6">
     <ng-container [ngSwitch]="mode">

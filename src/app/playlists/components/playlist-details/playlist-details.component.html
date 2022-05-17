@@ -1,40 +1,46 @@
-<!-- dl>(dt{Name:}+dd{Moja playlista})*3 -->
+<ng-template #noPlaylistTpl>
+  <p class="alert alert-info">No playlist selected</p>
+</ng-template>
 
-<!--
-  {{ "Ala" + "Ma" + "Kota" }}
-  {{ 1 + 2 > 3 ? 'prawda' : 'falsz '}} 
--->
+<div *ngIf="playlist; else noPlaylistTpl">
+<!--  -->
+  <dl [title]="'playlist_' + playlist.id" [attr.data-playlist-id]="playlist.id">
+    <dt>Name:</dt>
+    <dd>{{ playlist.name }}</dd>
 
-<dl [title]="'playlist_' + playlist?.id" [attr.data-playlist-id]="playlist?.id">
-  <dt>Name:</dt>
-  <dd>{{ playlist?.name }}</dd>
+    <dt>Public:</dt>
 
-  <dt>Public:</dt>
-
-  <!-- <dd
-    [style.color]="playlist?.public ? 'red' : 'green'"
+    <!-- <dd
+    [style.color]="playlist.public ? 'red' : 'green'"
     [style.borderBottom]="'1px solid '"
   > -->
-  <!-- <dd
+    <!-- <dd
     [ngStyle]="{
-      color: playlist?.public ? 'red' : 'green',
-      borderBottom: playlist?.public ? 'red' : 'green'
+      color: playlist.public ? 'red' : 'green',
+      borderBottom: playlist.public ? 'red' : 'green'
     }"
   > -->
-  <!-- <dd
-    [class.public]="playlist?.public"
-    [class.private]="playlist?.public === false"
+    <!-- <dd
+    [class.public]="playlist.public"
+    [class.private]="playlist.public === false"
   > -->
-  <dd
-    class="trzecia_klasa"
-    [ngClass]="{
-      public: playlist?.public,
-      private: !playlist?.public
-    }"
-  >
-    {{ playlist?.public ? "Yes" : "No" }}
-  </dd>
+    <dd
+      class="trzecia_klasa"
+      [ngClass]="{
+        public: playlist.public,
+        private: !playlist.public
+      }"
+    >
+      {{ playlist.public ? "Yes" : "No" }}
+    </dd>
 
-  <dt>Description:</dt>
-  <dd>{{ playlist?.description }}</dd>
-</dl>
+    <dt>Description:</dt>
+    <dd>{{ playlist.description }}</dd>
+  </dl>
+
+  <!-- dl>(dt{Name:}+dd{Moja playlista})*3 -->
+
+  <!--
+  {{ "Ala" + "Ma" + "Kota" }}
+  {{ 1 + 2 > 3 ? 'prawda' : 'falsz '}} 
+--></div>

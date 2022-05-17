@@ -29,8 +29,8 @@ export class PlaylistsViewComponent implements OnInit {
       description: 'fav playlist'
     }
   ]
-  selectedId = '234'
-  selected: Playlist = this.playlists[1]
+  selectedId = ''
+  selected?: Playlist // = this.playlists[1]
 
   selectPlaylist(id: string) {
     this.selectedId = id
