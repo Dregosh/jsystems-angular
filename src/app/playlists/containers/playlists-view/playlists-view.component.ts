@@ -32,6 +32,13 @@ export class PlaylistsViewComponent implements OnInit {
   selectedId = '234'
   selected: Playlist = this.playlists[1]
 
+  selectPlaylist(id: string) {
+    const selected = this.playlists.find(p => p.id === id)
+    if (selected) {
+      this.selected = selected
+    }
+  }
+
   constructor() {
     // if (this.mode === 'details') {
     //   this.mode /// details

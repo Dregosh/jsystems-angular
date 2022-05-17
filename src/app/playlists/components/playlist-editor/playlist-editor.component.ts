@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-playlist-editor',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistEditorComponent implements OnInit {
 
-  playlist = {
+  @Input() playlist = {
     id: '123',
     name: "Playlista ABC",
     public: false,
