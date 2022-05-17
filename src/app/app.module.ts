@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { API_URL } from './core/tokens';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { API_URL } from './core/tokens';
   ],
   imports: [
     // SuperHiperDataGridDatePicker
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule,

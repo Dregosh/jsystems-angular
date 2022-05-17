@@ -11,9 +11,8 @@ import { API_URL } from './tokens';
   providers: [
     {
       provide: API_URL,
-      useValue: environment.api_url
+      useValue: environment.api_url,
     },
-    
   ]
 })
 export class CoreModule { }
