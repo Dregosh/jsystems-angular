@@ -9,12 +9,10 @@ import { Playlist } from 'src/app/core/model/Playlist';
 export class PlaylistDetailsComponent implements OnInit {
 
   /* TODO: selected playlist */
-  @Input() playlist: Playlist = {
-    id: '123',
-    name: "Playlista ABC",
-    public: false,
-    description: 'best playlist ever',
-  }
+  // @Input() playlist: Playlist // error
+  // @Input() playlist: Playlist | undefined
+  
+  @Input() playlist?: Playlist
 
   constructor() { }
 

@@ -5,36 +5,36 @@
   {{ 1 + 2 > 3 ? 'prawda' : 'falsz '}} 
 -->
 
-<dl [title]="'playlist_' + playlist.id" [attr.data-playlist-id]="playlist.id">
+<dl [title]="'playlist_' + playlist?.id" [attr.data-playlist-id]="playlist?.id">
   <dt>Name:</dt>
-  <dd>{{ playlist.name }}</dd>
+  <dd>{{ playlist?.name }}</dd>
 
   <dt>Public:</dt>
 
   <!-- <dd
-    [style.color]="playlist.public ? 'red' : 'green'"
+    [style.color]="playlist?.public ? 'red' : 'green'"
     [style.borderBottom]="'1px solid '"
   > -->
   <!-- <dd
     [ngStyle]="{
-      color: playlist.public ? 'red' : 'green',
-      borderBottom: playlist.public ? 'red' : 'green'
+      color: playlist?.public ? 'red' : 'green',
+      borderBottom: playlist?.public ? 'red' : 'green'
     }"
   > -->
   <!-- <dd
-    [class.public]="playlist.public"
-    [class.private]="playlist.public === false"
+    [class.public]="playlist?.public"
+    [class.private]="playlist?.public === false"
   > -->
   <dd
     class="trzecia_klasa"
     [ngClass]="{
-      public: playlist.public,
-      private: !playlist.public
+      public: playlist?.public,
+      private: !playlist?.public
     }"
   >
-    {{ playlist.public ? "Yes" : "No" }}
+    {{ playlist?.public ? "Yes" : "No" }}
   </dd>
 
   <dt>Description:</dt>
-  <dd>{{ playlist.description }}</dd>
+  <dd>{{ playlist?.description }}</dd>
 </dl>
