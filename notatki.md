@@ -89,3 +89,6 @@ ng g c music/components/search-form -m music
 ng g c music/components/results-grid -m music
 ng g c music/components/album-card -m music
 
+## Services
+
+ng g s core/services/music-api --flat false 

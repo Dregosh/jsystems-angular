@@ -9,7 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class SearchFormComponent implements OnInit {
 
   queryForm = new FormGroup({
-    'query': new FormControl('', [])
+    'query': new FormControl('batman', [])
   })
 
   @Output() search = new EventEmitter<string>();
