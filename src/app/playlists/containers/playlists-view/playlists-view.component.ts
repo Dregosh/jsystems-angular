@@ -10,7 +10,6 @@ export class PlaylistsViewComponent implements OnInit {
 
   mode: 'editor' | 'details' = 'details'
 
-
   playlists: Playlist[] = [
     {
       id: '123',

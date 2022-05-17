@@ -19,7 +19,6 @@ export class PlaylistDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (!this.playlist) throw new Error('missing input')
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-playlist-editor',
@@ -25,9 +25,31 @@ export class PlaylistEditorComponent implements OnInit {
     this.save.emit(this.playlist)
   }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    console.log('constructor');
   }
 
+  ngOnInit(): void {
+    console.log('ngOnInit');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    console.log('ngOnChanges', changes);
+  }
+
+  ngDoCheck(): void {
+    //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
+    console.log('ngDoCheck');
+  }
+
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    console.log('ngAfterViewInit');
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    console.log('ngOnDestroy');
+  }
 }
