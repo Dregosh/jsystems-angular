@@ -57,6 +57,7 @@ export class PlaylistsViewComponent implements OnInit {
     
     const index = this.playlists.findIndex(p => p.id === draft.id)
     this.playlists[index] = draft;
+    
     this.selectedId = draft.id
     this.selected = draft;
     this.mode = 'details'
