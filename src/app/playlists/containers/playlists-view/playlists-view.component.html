@@ -8,7 +8,10 @@
       <button class="btn btn-danger" (click)="cancel()">Cancel</button>
     </div>
 
-    {{ mode }}
+<!-- Error  NG0201: No provider for TemplateRef -->
+    <div ngIf="true">
+      {{ mode }}
+    </div>
 
     <ng-template [ngIf]="mode === 'details'">
       <app-playlist-details></app-playlist-details>
