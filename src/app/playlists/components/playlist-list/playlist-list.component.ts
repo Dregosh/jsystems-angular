@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Playlist } from '../../containers/playlists-view/Playlist';
 
 @Component({
   selector: 'app-playlist-list',
@@ -9,22 +10,7 @@ export class PlaylistListComponent implements OnInit {
 
   selectedId = '234'
 
-  playlists = [{
-    id: '123',
-    name: "Playlista 123",
-    public: false,
-    description: 'top playlist'
-  }, {
-    id: '234',
-    name: "Playlista 234",
-    public: true,
-    description: 'best playlist ever'
-  }, {
-    id: '345',
-    name: "Playlista 345",
-    public: false,
-    description: 'fav playlist'
-  }]
+  playlists: Playlist[] = [/* Playlist */]
 
   select(id: string) {
     this.selectedId = id
