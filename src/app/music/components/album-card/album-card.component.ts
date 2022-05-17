@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Album } from 'src/app/core/model/Search';
 
 @Component({
   selector: 'app-album-card',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbumCardComponent implements OnInit {
 
+  @Input() album!: Album;
+
   constructor() { }
 
   ngOnInit(): void {
+    // if .. throw error
   }
 
 }

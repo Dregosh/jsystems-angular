@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Album } from 'src/app/core/model/Search';
 
 @Component({
   selector: 'app-results-grid',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./results-grid.component.scss']
 })
 export class ResultsGridComponent implements OnInit {
+
+  @Input() results: Album[] = [];
 
   constructor() { }
 

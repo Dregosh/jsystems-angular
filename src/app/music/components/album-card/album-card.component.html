@@ -1,13 +1,7 @@
 <div class="card">
-  
-  <img
-    src="https://www.placecage.com/c/200/200"
-    class="card-img-top"
-    alt="..."
-  />
+  <img [src]="album.images[0].url" class="card-img-top" alt="..." />
 
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+    <h5 class="card-title">{{ album.name }}</h5>
   </div>
-
 </div>
