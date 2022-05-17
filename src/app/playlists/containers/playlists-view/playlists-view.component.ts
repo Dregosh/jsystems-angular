@@ -33,6 +33,7 @@ export class PlaylistsViewComponent implements OnInit {
   selected: Playlist = this.playlists[1]
 
   selectPlaylist(id: string) {
+    this.selectedId = id
     const selected = this.playlists.find(p => p.id === id)
     if (selected) {
       this.selected = selected
