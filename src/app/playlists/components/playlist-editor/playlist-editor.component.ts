@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-playlist-editor',
@@ -25,12 +26,19 @@ export class PlaylistEditorComponent implements OnInit {
     this.save.emit(this.playlist)
   }
 
+  @ViewChild('formRef', { static: false })
+  formRef?: NgForm
+
   constructor() {
     console.log('constructor');
+    console.log(this.formRef?.value);
+
   }
 
   ngOnInit(): void {
     console.log('ngOnInit');
+    console.log(this.formRef?.value);
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -44,8 +52,17 @@ export class PlaylistEditorComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
+
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     console.log('ngAfterViewInit');
+    setTimeout(() => {
+      console.log(this.formRef?.value);
+    })
+  }
+
+  ngAfterViewChecked(): void {
+    console.log(this.formRef?.value);
+    console.log('ngAfterViewCheck');
   }
 
   ngOnDestroy(): void {
