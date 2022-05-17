@@ -1,24 +1,17 @@
-<!-- Emmet -->
-<!-- .row>.col*2 -->
-
 <div class="row">
   <div class="col-12 col-sm-6">
     <app-playlist-list></app-playlist-list>
   </div>
   <div class="col-12 col-sm-6">
-
-    <!-- () []  -->
-
     <div>
       <button class="btn btn-info" (click)="edit()">Edit</button>
       <button class="btn btn-danger" (click)="cancel()">Cancel</button>
     </div>
 
     {{ mode }}
-    
+
     <app-playlist-details [hidden]="mode !== 'details'"></app-playlist-details>
 
     <app-playlist-editor [hidden]="mode !== 'editor'"></app-playlist-editor>
-    
   </div>
 </div>
