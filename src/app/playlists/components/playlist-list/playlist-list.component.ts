@@ -10,7 +10,7 @@ export class PlaylistListComponent implements OnInit {
 
   selectedId = '234'
 
-  @Input('items') playlists: Playlist[] = [/* Playlist */]
+  @Input('items') playlists: Playlist[] = []
 
   select(id: string) {
     this.selectedId = id

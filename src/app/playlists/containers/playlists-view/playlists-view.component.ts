@@ -30,6 +30,7 @@ export class PlaylistsViewComponent implements OnInit {
       description: 'fav playlist'
     }
   ]
+  selected: Playlist = this.playlists[1]
 
   constructor() {
     // if (this.mode === 'details') {

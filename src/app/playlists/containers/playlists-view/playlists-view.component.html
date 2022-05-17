@@ -1,17 +1,14 @@
 <div class="row">
   <div class="col-12 col-sm-6">
-    
-    
+        
     <app-playlist-list [items]="playlists">
     </app-playlist-list>
     
     <input type="text" [value]="playlists[0].name">
 
-
   </div>
   <div class="col-12 col-sm-6">
 
-    <!--  *  []  {{ }}  ( )  #  -->
 
     <ng-container [ngSwitch]="mode">
       <app-playlist-details *ngSwitchDefault></app-playlist-details>

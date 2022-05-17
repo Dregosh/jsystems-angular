@@ -8,6 +8,7 @@ import { Playlist } from 'src/app/core/model/Playlist';
 })
 export class PlaylistDetailsComponent implements OnInit {
 
+  /* TODO: selected playlist */
   playlist: Playlist = {
     id: '123',
     name: "Playlista ABC",
