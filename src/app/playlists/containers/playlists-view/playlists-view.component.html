@@ -1,6 +1,13 @@
 <div class="row">
   <div class="col-12 col-sm-6">
-    <app-playlist-list></app-playlist-list>
+    
+    
+    <app-playlist-list [items]="playlists">
+    </app-playlist-list>
+    
+    <input type="text" [value]="playlists[0].name">
+
+
   </div>
   <div class="col-12 col-sm-6">
 

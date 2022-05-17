@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Playlist } from '../../../core/model/Playlist';
 
 @Component({
@@ -10,7 +10,7 @@ export class PlaylistListComponent implements OnInit {
 
   selectedId = '234'
 
-  playlists: Playlist[] = [/* Playlist */]
+  @Input('items') playlists: Playlist[] = [/* Playlist */]
 
   select(id: string) {
     this.selectedId = id
