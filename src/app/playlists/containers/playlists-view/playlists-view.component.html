@@ -8,9 +8,13 @@
       <button class="btn btn-danger" (click)="cancel()">Cancel</button>
     </div>
 
-    <app-playlist-details *ngIf="mode === 'details'"></app-playlist-details>
-    <app-playlist-editor *ngIf="mode === 'editor'"></app-playlist-editor>
-    
+    <!--  *  []  {{ }}  ( )  #  -->
+
+    <ng-container ngSwitch="mode">
+      <app-playlist-details ngSwitchCase="details"></app-playlist-details>
+      <app-playlist-editor ngSwitchCase="editor"></app-playlist-editor>
+    </ng-container>
+
   </div>
 </div>
 
