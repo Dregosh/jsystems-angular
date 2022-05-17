@@ -21,18 +21,12 @@ export class MusicApiService {
     const obs: Observable<Object> = this.http.get(this.api_url + 'search', {
       params: {
         type: 'album', query
+      },
+      headers: {
+        Authorization: 'Bearer lubieplacki'
       }
     })
 
-    const sub: Subscription = obs.subscribe(console.log)
-          sub.unsubscribe()
-
-    obs.subscribe({
-      next: res => console.log(res),
-      error: res => console.log(res),
-      complete: () => console.log('complete'),
-    })
-
-    return mockAlbums
+    return obs
   }
 }

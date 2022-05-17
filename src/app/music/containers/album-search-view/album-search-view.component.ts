@@ -10,10 +10,18 @@ import { MusicApiService } from 'src/app/core/services/music-api/music-api.servi
 })
 export class AlbumSearchViewComponent implements OnInit {
 
+  message = ''
   results: Album[] = []
 
   searchAlbums(query = 'batman') {
-    this.results = this.service.fetchAlbumSearchResults(query)
+    this.service
+      .fetchAlbumSearchResults(query)
+      .subscribe({
+        next: res => console.log(res),
+        error: res => this.message = (res.error.error.message),
+        complete: () => console.log('complete'),
+      })
+
   }
 
   constructor(
