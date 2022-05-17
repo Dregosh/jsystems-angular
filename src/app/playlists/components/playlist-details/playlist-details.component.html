@@ -3,27 +3,12 @@
 </ng-template>
 
 <div *ngIf="playlist; else noPlaylistTpl">
-<!--  -->
   <dl [title]="'playlist_' + playlist.id" [attr.data-playlist-id]="playlist.id">
     <dt>Name:</dt>
     <dd>{{ playlist.name }}</dd>
 
     <dt>Public:</dt>
 
-    <!-- <dd
-    [style.color]="playlist.public ? 'red' : 'green'"
-    [style.borderBottom]="'1px solid '"
-  > -->
-    <!-- <dd
-    [ngStyle]="{
-      color: playlist.public ? 'red' : 'green',
-      borderBottom: playlist.public ? 'red' : 'green'
-    }"
-  > -->
-    <!-- <dd
-    [class.public]="playlist.public"
-    [class.private]="playlist.public === false"
-  > -->
     <dd
       class="trzecia_klasa"
       [ngClass]="{
@@ -38,9 +23,7 @@
     <dd>{{ playlist.description }}</dd>
   </dl>
 
-  <!-- dl>(dt{Name:}+dd{Moja playlista})*3 -->
-
-  <!--
-  {{ "Ala" + "Ma" + "Kota" }}
-  {{ 1 + 2 > 3 ? 'prawda' : 'falsz '}} 
---></div>
+  <div>
+    <button class="btn btn-info" (click)="({})">Edit</button>
+  </div>
+</div>
