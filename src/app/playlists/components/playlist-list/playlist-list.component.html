@@ -1,7 +1,7 @@
 <!-- .list-group>.list-group-item.list-group-item-action*3{$. Playlist $$$} -->
 
 <div class="list-group">
-  <ng-template
+  <!-- <ng-template
     ngFor
     [ngForOf]="playlists"
     let-playlist="$implicit"
@@ -10,7 +10,24 @@
     <div class="list-group-item list-group-item-action">
       {{ i + 1 }}. {{ playlist.name }}
     </div>
-  </ng-template>
+  </ng-template> -->
+
+  <!-- ============= -->
+
+  <!-- <div
+    class="list-group-item list-group-item-action"
+    *ngFor="let playlist = $implicit; of: playlists; let i = index"
+  >
+    {{ i + 1 }}. {{ playlist.name }}
+  </div> -->
+
+  <div
+    class="list-group-item list-group-item-action"
+    *ngFor="let playlist of playlists; index as i"
+  >
+    {{ i + 1 }}. {{ playlist.name }}
+  </div>
+  
 </div>
 
 <!-- <div *ngIf="veryExpensiveOperation(); let result = $implicit">
