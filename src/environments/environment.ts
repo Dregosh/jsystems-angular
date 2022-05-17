@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://api.spotify.com/v1/search'
+  api_url: 'https://api.spotify.com/v1/'
 };
 
 /*
