@@ -22,8 +22,21 @@ export class PlaylistEditorComponent implements OnInit {
     this.cancel.emit()
   }
 
-  submit() {
-    this.save.emit(this.playlist)
+  submit(formRef: NgForm) {
+    // this.save.emit(this.playlist)
+
+    const {
+      name,
+      public: isPublic,
+      description
+    } = formRef.value
+
+    this.save.emit({
+      ...this.playlist,
+      name: name,
+      public: isPublic,
+      description: description,
+    })
   }
 
   // @ViewChildren(NgModel, { static: false })

@@ -1,4 +1,5 @@
-<form #formRef="ngForm" *ngIf="playlist">
+<form #formRef="ngForm" *ngIf="playlist"
+(ngSubmit)="submit(formRef)">
   <!-- If ngModel is used within a form tag, either the name attribute must be set or the form
     control must be defined as 'standalone' in ngModelOptions. -->
 
@@ -12,7 +13,7 @@
       class="form-control"
       id="exampleFormControlInput1"
       placeholder="Name"
-      [(ngModel)]="playlist.name"
+      [ngModel]="playlist.name"
       name="name"
     />
   </div>
@@ -22,7 +23,7 @@
       class="form-check-input"
       type="checkbox"
       id="flexCheckDefault"
-      [(ngModel)]="playlist.public"
+      [ngModel]="playlist.public"
       name="public"
     />
     <label class="form-check-label" for="flexCheckDefault"> Public </label>
@@ -42,7 +43,7 @@
       </label>
     </div>
   </div>
-  
+
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label"
       >Description</label
@@ -51,14 +52,14 @@
       class="form-control"
       placeholder="Description"
       id="exampleFormControlTextarea1"
-      [(ngModel)]="playlist.description"
+      [ngModel]="playlist.description"
       name="description"
       rows="3"
     ></textarea>
   </div>
 
   <div>
-    <button class="btn btn-success" (click)="submit()">Save</button>
+    <button class="btn btn-success" type="submit">Save</button>
 
     <button class="btn btn-danger" (click)="cancelClick()">Cancel</button>
   </div>
