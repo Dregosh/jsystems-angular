@@ -27,7 +27,7 @@ export class PlaylistListComponent implements OnInit {
   }]
 
   select(id: string) {
-    // TODO:
+    this.selectedId = id
   }
 
   constructor() { }
