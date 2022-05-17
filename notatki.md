@@ -85,3 +85,4 @@ ng g c music/containers/album-search-view -m music
 ng g c music/components/search-form -m music
 ng g c music/components/results-grid -m music
 ng g c music/components/album-card -m music
+
