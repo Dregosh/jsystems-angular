@@ -1,13 +1,19 @@
 <!-- .list-group>.list-group-item.list-group-item-action*3{$. Playlist $$$} -->
 
 <div class="list-group">
-  <div class="list-group-item list-group-item-action">
-    1. Playlist 001
-  </div>
-  <div class="list-group-item list-group-item-action">
-    2. Playlist 002
-  </div>
-  <div class="list-group-item list-group-item-action">
-    3. Playlist 003
-  </div>
+  <ng-template
+    ngFor
+    [ngForOf]="playlists"
+    let-playlist="$implicit"
+    let-i="index"
+  >
+    <div class="list-group-item list-group-item-action">
+      {{ i + 1 }}. {{ playlist.name }}
+    </div>
+  </ng-template>
 </div>
+
+<!-- <div *ngIf="veryExpensiveOperation(); let result = $implicit">
+  {{ veryExpensiveOperation() }} 
+  {{ result }} 
+</div> -->

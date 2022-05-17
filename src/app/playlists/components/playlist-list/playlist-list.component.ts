@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistListComponent implements OnInit {
 
-  playlist = [{
+  playlists = [{
     id: '123',
     name: "Playlista 123",
     public: false,
