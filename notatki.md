@@ -55,6 +55,9 @@ https://marketplace.visualstudio.com/items?itemName=Angular.ng-template
 Angular 10 Snippets
 https://marketplace.visualstudio.com/items?itemName=Mikael.Angular-BeastCode
 
+Quicktype
+https://marketplace.visualstudio.com/items?itemName=quicktype.quicktype
+
 ## Chrome dev ext
 
 https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh
