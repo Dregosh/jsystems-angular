@@ -17,7 +17,6 @@ export class AlbumSearchViewComponent implements OnInit {
   }
 
   constructor(
-    // @Inject(MusicApiService)
     protected service: MusicApiService
   ) { }
 
