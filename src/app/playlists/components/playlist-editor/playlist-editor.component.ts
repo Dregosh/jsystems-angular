@@ -26,47 +26,48 @@ export class PlaylistEditorComponent implements OnInit {
     this.save.emit(this.playlist)
   }
 
+  // @ViewChildren(NgModel, { static: false })
   @ViewChild('formRef', { static: false })
   formRef?: NgForm
 
   constructor() {
-    console.log('constructor');
-    console.log(this.formRef?.value);
+    // console.log('constructor');
+    // console.log(this.formRef?.value);
 
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
-    console.log(this.formRef?.value);
+    // console.log('ngOnInit');
+    // console.log(this.formRef?.value);
 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    console.log('ngOnChanges', changes);
+    // console.log('ngOnChanges', changes);
   }
 
   ngDoCheck(): void {
     //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
-    console.log('ngDoCheck');
+    // console.log('ngDoCheck');
   }
 
   ngAfterViewInit(): void {
 
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    console.log('ngAfterViewInit');
+    // console.log('ngAfterViewInit');
     setTimeout(() => {
-      console.log(this.formRef?.value);
+      // console.log(this.formRef?.value);
     })
   }
 
   ngAfterViewChecked(): void {
-    console.log(this.formRef?.value);
-    console.log('ngAfterViewCheck');
+    // console.log(this.formRef?.value);
+    // console.log('ngAfterViewCheck');
   }
 
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
-    console.log('ngOnDestroy');
+    // console.log('ngOnDestroy');
   }
 }
