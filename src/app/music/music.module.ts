@@ -7,6 +7,7 @@ import { AlbumSearchViewComponent } from './containers/album-search-view/album-s
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { ResultsGridComponent } from './components/results-grid/results-grid.component';
 import { AlbumCardComponent } from './components/album-card/album-card.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { AlbumCardComponent } from './components/album-card/album-card.component
     AlbumCardComponent
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     MusicRoutingModule
   ]
 })

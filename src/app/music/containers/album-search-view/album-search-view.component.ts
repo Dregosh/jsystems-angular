@@ -9,10 +9,11 @@ import { Album } from 'src/app/core/model/Search';
 })
 export class AlbumSearchViewComponent implements OnInit {
 
-  results: Album[] = mockAlbums
+  results: Album[] = []
 
-  search(query = 'batman') {
+  searchAlbums(query = 'batman') {
     console.log(query);
+    this.results = mockAlbums
   }
 
   constructor() { }
