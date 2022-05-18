@@ -20,7 +20,7 @@ export class AlbumSearchViewComponent implements OnInit {
       .subscribe({
         next: res => this.results = res,
         error: error => this.message = error.message,
-        complete: () => console.log('complete'),
+        // complete: () => console.log('complete'),
       })
 
   }

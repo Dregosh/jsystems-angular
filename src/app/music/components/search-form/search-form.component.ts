@@ -23,12 +23,22 @@ export class SearchFormComponent implements OnInit {
       const hasError = String(control.value).includes(badword)
 
       return new Observable((observer) => {
-        
-        setTimeout(() => {
+        console.log('Subscribed');
+
+        const handle = setTimeout(() => {
+          console.log('Next');
           observer.next(hasError ? {
             'censor': { badword }
           } : null)
+          observer.complete()
+
         }, 2000)
+
+        /* Destructor - on:Unsubscribe / on:Complete */
+        return () => {
+          console.log('Unsubscribe');
+          clearTimeout(handle)
+        }
       })
     }
 
