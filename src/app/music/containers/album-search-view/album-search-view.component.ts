@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { concatAll, concatMap, exhaustMap, filter, map, mergeAll, mergeMap, Subject, Subscription, switchMap, takeUntil, takeWhile, tap } from 'rxjs';
+import { concatAll, concatMap, exhaustMap, filter, map, mergeAll, mergeMap, share, Subject, Subscription, switchMap, takeUntil, takeWhile, tap } from 'rxjs';
 import { mockAlbums } from 'src/app/core/mocks/mockAlbums';
 import { Album } from 'src/app/core/model/Search';
 import { MusicApiService } from 'src/app/core/services/music-api/music-api.service';
@@ -22,6 +22,11 @@ export class AlbumSearchViewComponent implements OnInit {
 
   resultsChanges = this.queryChanges.pipe(
     switchMap(query => this.service.fetchAlbumSearchResults(query)),
+    share({
+      // connector: () => new Subject()
+      // resetOnRefCountZero:true
+      // reset ...
+    })
   )
 
   constructor(
@@ -36,7 +41,7 @@ export class AlbumSearchViewComponent implements OnInit {
   searchAlbums(query = 'batman') {
 
     // Replace obserbable - AsyncPipe will switch!!
-    this.resultsChanges = this.service.fetchAlbumSearchResults(query)
+    // this.resultsChanges = this.service.fetchAlbumSearchResults(query)
 
     this.router.navigate([], {
       relativeTo: this.route,
