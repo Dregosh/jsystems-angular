@@ -29,7 +29,6 @@ export class AlbumSearchViewComponent implements OnInit {
       filter((q: any): q is string => typeof q === 'string'),
       tap(q => { this.query = q }),
     ).subscribe(q => {
-
       this.service
         .fetchAlbumSearchResults(q)
         .subscribe({
