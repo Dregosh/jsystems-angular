@@ -4,6 +4,7 @@ import { concatAll, concatMap, exhaustMap, filter, map, mergeAll, mergeMap, swit
 import { mockAlbums } from 'src/app/core/mocks/mockAlbums';
 import { Album } from 'src/app/core/model/Search';
 import { MusicApiService } from 'src/app/core/services/music-api/music-api.service';
+import { MusicSearchService } from 'src/app/core/services/music-search/music-search.service';
 
 @Component({
   selector: 'app-album-search-view',
@@ -17,7 +18,7 @@ export class AlbumSearchViewComponent implements OnInit {
   query = ''
 
   constructor(
-    protected service: MusicApiService,
+    protected service: MusicSearchService,
     protected router: Router,
     protected route: ActivatedRoute,
   ) { }
@@ -32,7 +33,7 @@ export class AlbumSearchViewComponent implements OnInit {
 
 
     const resultsChanges = queryChanges.pipe(
-      switchMap(query => this.service.fetchAlbumSearchResults(query)),
+      switchMap(query => this.service.searchAlbums(query)),
     )
 
     resultsChanges.subscribe(res => this.results = res)
