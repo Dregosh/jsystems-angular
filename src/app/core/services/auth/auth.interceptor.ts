@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { ErrorHandler, Inject, Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -14,7 +14,7 @@ import { API_URL } from '../../tokens';
 export class AuthInterceptor implements HttpInterceptor {
 
   constructor(
-
+    private errorHandler: ErrorHandler,
     @Inject(API_URL) private api_url: string,
     private auth: AuthService
   ) { }
@@ -41,6 +41,9 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(authReq).pipe(
       catchError((error: unknown) => {
 
+        // TODO: Remote Telemetry Error - Sentry.io, DataDog, DevOps...
+        this.errorHandler.handleError(error)
+
         if (!(error instanceof HttpErrorResponse)) {
           return throwError(() => new Error('Unexpected Error'))
         }
@@ -48,7 +51,7 @@ export class AuthInterceptor implements HttpInterceptor {
         // TODO: refresh token and :
         // return next.handle(refreshedRequest)
 
-        if(error.status === 401){
+        if (error.status === 401) {
           this.auth.login()
         }
 
