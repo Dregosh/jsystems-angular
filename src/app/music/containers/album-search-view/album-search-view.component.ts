@@ -23,7 +23,6 @@ export class AlbumSearchViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // const q = this.route.snapshot.queryParamMap.get('q')
 
     this.route.queryParamMap.pipe(
       map(qm => qm.get('q')),
@@ -36,11 +35,7 @@ export class AlbumSearchViewComponent implements OnInit {
 
   searchAlbums(query = 'batman') {
 
-    this.router.navigate([
-      /* '/music', 'search' */
-      /* '..' */
-      /* './sibling' */
-    ], {
+    this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { q: query }
     })
