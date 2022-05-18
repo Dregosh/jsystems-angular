@@ -108,3 +108,13 @@ npm i angular-oauth2-oidc --save
 
 ## Interceptors
 ng g interceptor core/services/auth/auth
+
+## Rxjs
+https://rxjs.dev/operator-decision-tree
+https://rxviz.com/examples/higher-order-observable
+https://rxmarbles.com/#withLatestFrom
+https://www.learnrxjs.io/
+
+
+
+

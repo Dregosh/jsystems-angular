@@ -77,7 +77,7 @@ export class SearchFormComponent implements OnInit {
 
     validChanges.pipe(
       withLatestFrom(valueChanges),
-      map(([_, value]) => value),
+      map(([/* status */, value]) => value),
       filter(isString),
       debounceTime(500),
       distinctUntilChanged(/* compFn? */),
