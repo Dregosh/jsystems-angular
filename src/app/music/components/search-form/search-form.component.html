@@ -1,4 +1,9 @@
-<form class="mb-3" [formGroup]="queryForm" (ngSubmit)="submit()">
+<form
+  class="mb-3"
+  [formGroup]="queryForm"
+  (ngSubmit)="submit()"
+  #formRef="ngForm"
+>
   <div class="input-group">
     <input
       type="text"
@@ -11,16 +16,18 @@
   </div>
 
   <ng-container *ngIf="queryForm.get('query') as field">
-    <p class="text-danger" *ngIf="field.hasError('required')">
-      Field is required
-    </p>
+    <ng-container *ngIf="field.dirty || field.touched || formRef.submitted">
+      <p class="text-danger" *ngIf="field.hasError('required')">
+        Field is required
+      </p>
 
-    <p class="text-danger" *ngIf="field.getError('minlength') as error">
-      Minimum length is {{ error.requiredLength }} characters
-    </p>
+      <p class="text-danger" *ngIf="field.getError('minlength') as error">
+        Minimum length is {{ error.requiredLength }} characters
+      </p>
 
-    <p class="text-danger" *ngIf="field.getError('censor') as error">
-      Cannot contain "{{ error.badword }}""
-    </p>
+      <p class="text-danger" *ngIf="field.getError('censor') as error">
+        Cannot contain "{{ error.badword }}""
+      </p>
+    </ng-container>
   </ng-container>
 </form>

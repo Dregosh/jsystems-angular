@@ -19,7 +19,7 @@ export class SearchFormComponent implements OnInit {
     }
 
   queryForm = new FormGroup({
-    'query': new FormControl('batman', [
+    'query': new FormControl('', [
       Validators.required,
       Validators.minLength(3),
       this.censor('placki')
