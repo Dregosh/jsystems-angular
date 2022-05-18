@@ -42,7 +42,11 @@ function checkExhaustivness(res: never): never {
   throw new Error('Unexpected result')
 }
 
-
+function neverEndingStory(): never {
+  while (true) { }
+}
+// neverEndingStory()
+// const x = 1 // Unreachable code detected
 
 // const p = {} as any
 
