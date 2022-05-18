@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { mockAlbums } from '../../mocks/mockAlbums';
 import { API_URL } from '../../tokens';
 import { HttpClient } from '@angular/common/http'
-import { catchError, EMPTY, from, map, NEVER, Observable, of, Subscription } from 'rxjs';
+import { catchError, EMPTY, from, map, NEVER, Observable, of, Subscription, throwError } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { Album, AlbumSearchResponse, PagingObject } from '../../model/Search';
 
@@ -31,16 +31,10 @@ export class MusicApiService {
     }).pipe(
       map(res => res.albums.items),
       catchError(error => {
-        // TODO:...
 
-        /* --A-| */
-        return of(mockAlbums)
-        /* ---A---B---C---| */
-        return from([mockAlbums, mockAlbums, mockAlbums])
-        return from([/* ----| */])
-        return [] /* --| */
-        return EMPTY
-        return NEVER
+
+        return throwError(() =>
+          new Error(error.error.error.message))
       })
     )
   }
