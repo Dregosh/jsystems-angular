@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, placki } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
 
 @Component({
   selector: 'app-search-form',
@@ -31,18 +32,23 @@ export class SearchFormComponent implements OnInit {
     const valueChanges = field.valueChanges
 
     valueChanges.pipe(
+      filter(isString),
+
       // length >= 3
+      filter(query => query.length >= 3),
 
       // no duplicates!
+      distinctUntilChanged(/* compFn? */),
 
       // once in 500ms  ( 400ms - Doherty Treshold )
-
+      debounceTime(500)
     )
       .subscribe(console.log)
   }
 
 }
 
+const isString = (query: any): query is string => typeof query === 'string';
 
 // Ambient Type Declarations
 
