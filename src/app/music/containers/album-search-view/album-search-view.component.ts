@@ -36,10 +36,10 @@ export class AlbumSearchViewComponent implements OnInit {
       switchMap(query => this.service.searchAlbums(query)),
     )
 
-    this.sub = resultsChanges.subscribe(res => this.results = res)
+    this.sub.add(resultsChanges.subscribe(res => this.results = res))
   }
 
-  sub?:Subscription
+  sub = new Subscription()
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe()
