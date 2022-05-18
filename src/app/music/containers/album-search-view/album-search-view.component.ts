@@ -14,6 +14,7 @@ export class AlbumSearchViewComponent implements OnInit {
   results: Album[] = []
 
   searchAlbums(query = 'batman') {
+    
     this.service
       .fetchAlbumSearchResults(query)
       .subscribe({
