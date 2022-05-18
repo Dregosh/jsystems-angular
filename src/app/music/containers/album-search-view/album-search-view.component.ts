@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map, tap } from 'rxjs';
+import { concatAll, concatMap, exhaustMap, filter, map, mergeAll, mergeMap, switchMap, tap } from 'rxjs';
 import { mockAlbums } from 'src/app/core/mocks/mockAlbums';
 import { Album } from 'src/app/core/model/Search';
 import { MusicApiService } from 'src/app/core/services/music-api/music-api.service';
@@ -24,18 +24,36 @@ export class AlbumSearchViewComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.queryParamMap.pipe(
+    const queryChanges = this.route.queryParamMap.pipe(
       map(qm => qm.get('q')),
       filter((q: any): q is string => typeof q === 'string'),
-      tap(q => { this.query = q }),
-    ).subscribe(q => {
-      this.service
-        .fetchAlbumSearchResults(q)
-        .subscribe({
-          next: res => this.results = res,
-          error: error => this.message = error.message,
-        })
-    })
+    )
+    queryChanges.subscribe(q => { this.query = q })
+
+
+    const resultsChanges = queryChanges.pipe(
+      // mergeMap(query => this.service.fetchAlbumSearchResults(query)),
+      // concatMap(query => this.service.fetchAlbumSearchResults(query)),
+      // exhaustMap(query => this.service.fetchAlbumSearchResults(query)), // throttle - first!
+      switchMap(query => this.service.fetchAlbumSearchResults(query)), // debounce - latest!
+    )
+    
+    resultsChanges.subscribe(res => this.results = res)
+
+    //  Observable< Observable< AlbumResponse[] > >
+    // resultsChanges.subscribe(obs =>
+    //   obs.subscribe(res => this.results = res))
+
+
+
+    // ).subscribe(q => {
+    //   this.service
+    //     .fetchAlbumSearchResults(q)
+    //     .subscribe({
+    //       next: res => this.results = res,
+    //       error: error => this.message = error.message,
+    //     })
+    // })
   }
 
   searchAlbums(query = 'batman') {
