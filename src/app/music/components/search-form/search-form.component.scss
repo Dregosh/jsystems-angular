@@ -17,5 +17,9 @@ form {
     &.ng-valid {
       border: 2px solid green;
     }
+
+    &.ng-pending {
+      border: 2px solid blue;
+    }
   }
 }

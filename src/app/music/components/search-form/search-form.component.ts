@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, placki } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-form',
@@ -18,11 +18,27 @@ export class SearchFormComponent implements OnInit {
       } : null
     }
 
+  asyncCensor = (badword: string) => //
+    (control: AbstractControl): Observable<ValidationErrors | null> => {
+      const hasError = String(control.value).includes(badword)
+
+      return new Observable((observer) => {
+        
+        setTimeout(() => {
+          observer.next(hasError ? {
+            'censor': { badword }
+          } : null)
+        }, 2000)
+      })
+    }
+
   queryForm = new FormGroup({
     'query': new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-      this.censor('placki')
+      // this.censor('placki')
+    ], [
+      this.asyncCensor('placki')
     ])
   })
 
