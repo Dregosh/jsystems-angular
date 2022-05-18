@@ -15,13 +15,15 @@ export class RecentSearchComponent implements OnInit {
     private cdr: ChangeDetectorRef
   ) { }
 
-  search(query:string){
+  search(query: string) {
     this.service.searchAlbums(query)
   }
 
   ngOnInit(): void {
-    this.service.queryChange.subscribe(() => {
-      this.queries = this.service.getQueries()
+
+    this.service.getQueries().subscribe((query) => {
+      this.queries.push(query)
+      this.queries = this.queries.slice(-5)
       this.cdr.markForCheck()
     })
   }

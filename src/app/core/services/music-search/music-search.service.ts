@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { concat, from, Observable, of, Subject } from 'rxjs';
 import { Album } from '../../model/Search';
 import { MusicApiService } from '../music-api/music-api.service';
 
@@ -15,7 +15,10 @@ export class MusicSearchService {
   resultsChanges = new Subject<Album[]>()
 
   getQueries() {
-    return this.queries
+    return concat(
+      from(this.queries),
+      this.queryChange
+    )
   }
 
   searchAlbums(query: string): Observable<Album[]> {
@@ -31,6 +34,5 @@ export class MusicSearchService {
     return this.resultsChanges.asObservable()
   }
 
-  constructor(
-    protected service: MusicApiService,) { }
+  constructor(protected service: MusicApiService) { }
 }
