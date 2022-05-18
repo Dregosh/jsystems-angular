@@ -33,21 +33,23 @@ export class MusicApiService {
       map(res => res.albums.items),
       catchError((error: unknown) => {
 
-
-        if (error instanceof HttpErrorResponse) {
-          if (isSpotifyErrorResponse(error.error)) {
-            const res = error.error
-            return throwError(() =>
-              new Error(res.error.message))
-          }
+        if (!(error instanceof HttpErrorResponse)) {
+          return throwError(() => new Error('Unexpected Error'))
         }
 
-        return throwError(() => new Error('Unexpected Error'))
+        if (!(isSpotifyErrorResponse(error.error))) {
+          return throwError(() => new Error('Unexpected Server Error'))
+        }
+
+        const res = error.error
+        return throwError(() => new Error(res.error.message))
       })
     )
   }
 }
 
+
+// https://github.com/colinhacks/zod#shape
 
 // Function Type Guards
 function isSpotifyErrorResponse(res: any): res is SpotifyErrorResponse {
