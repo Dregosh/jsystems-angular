@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, placki } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, placki } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, map, Observable, withLatestFrom } from 'rxjs';
 
@@ -53,6 +53,13 @@ export class SearchFormComponent implements OnInit {
       this.asyncCensor('placki')
     ])
   })
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //  or:
+
+  @Input() set query(q: string) {
+    this.queryForm.get('query')?.setValue(q)
+  }
 
   @Output() search = new EventEmitter<string>();
 

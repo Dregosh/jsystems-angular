@@ -1,7 +1,9 @@
 <!-- .row*2>.col -->
 <div class="row">
   <div class="col">
-    <app-search-form (search)="searchAlbums($event)"></app-search-form>
+    <app-search-form 
+    [query]="query"
+    (search)="searchAlbums($event)"></app-search-form>
   </div>
 </div>
 
