@@ -4,9 +4,13 @@
   </button>
   <ul class="dropdown-menu show bg-dark">
     <li>
-      <a class="dropdown-item" href="#" *ngFor="let query of queries">{{
-        query
-      }}</a>
+      <a
+        class="dropdown-item"
+        
+        *ngFor="let query of queries"
+        (click)="search(query)"
+        >{{ query }}</a
+      >
     </li>
   </ul>
 </div>

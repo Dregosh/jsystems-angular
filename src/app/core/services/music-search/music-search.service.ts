@@ -11,15 +11,24 @@ export class MusicSearchService {
   queries: string[] = []
   queryChange = new Subject<string>()
 
+  results: Album[] = []
+  resultsChanges = new Subject<Album[]>()
+
   getQueries() {
     return this.queries
   }
 
   searchAlbums(query: string): Observable<Album[]> {
     this.queries.push(query)
+    this.queries = this.queries.slice(-5)
     this.queryChange.next(query)
 
-    return this.service.fetchAlbumSearchResults(query)
+    this.service.fetchAlbumSearchResults(query).subscribe(res => {
+      this.results = res;
+      this.resultsChanges.next(res)
+    })
+
+    return this.resultsChanges.asObservable()
   }
 
   constructor(
