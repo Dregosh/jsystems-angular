@@ -48,6 +48,10 @@ export class AuthInterceptor implements HttpInterceptor {
         // TODO: refresh token and :
         // return next.handle(refreshedRequest)
 
+        if(error.status === 401){
+          this.auth.login()
+        }
+
         if (!(isSpotifyErrorResponse(error.error))) {
           return throwError(() => new Error('Unexpected Server Error'))
         }
