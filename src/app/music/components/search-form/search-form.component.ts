@@ -9,15 +9,20 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
 })
 export class SearchFormComponent implements OnInit {
 
-  censor(control: AbstractControl): ValidationErrors | null {
-    return null
-  }
+  censor = (badword: string) => //
+    (control: AbstractControl): ValidationErrors | null => {
+      const hasError = String(control.value).includes(badword)
+
+      return hasError ? {
+        'censor': { badword }
+      } : null
+    }
 
   queryForm = new FormGroup({
     'query': new FormControl('batman', [
       Validators.required,
       Validators.minLength(3),
-      this.censor
+      this.censor('placki')
     ])
   })
 
