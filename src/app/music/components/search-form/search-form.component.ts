@@ -40,12 +40,23 @@ export class SearchFormComponent implements OnInit {
 
       // length >= 3
       filter(query => query.length >= 3),
-      
+
       // no duplicates!
       distinctUntilChanged(/* compFn? */),
-      
+
     )
-      .subscribe(console.log)
+      // .subscribe(console.log)
+
+      // .subscribe({
+      //   next: res => this.search.next(res),
+      //   error: res => this.search.error(res),
+      //   complete: () => this.search.complete(),
+      // })
+
+      // Subject Chaining
+      .subscribe(this.search)
+
+
   }
 
 }
