@@ -32,28 +32,10 @@ export class AlbumSearchViewComponent implements OnInit {
 
 
     const resultsChanges = queryChanges.pipe(
-      // mergeMap(query => this.service.fetchAlbumSearchResults(query)),
-      // concatMap(query => this.service.fetchAlbumSearchResults(query)),
-      // exhaustMap(query => this.service.fetchAlbumSearchResults(query)), // throttle - first!
-      switchMap(query => this.service.fetchAlbumSearchResults(query)), // debounce - latest!
+      switchMap(query => this.service.fetchAlbumSearchResults(query)),
     )
-    
+
     resultsChanges.subscribe(res => this.results = res)
-
-    //  Observable< Observable< AlbumResponse[] > >
-    // resultsChanges.subscribe(obs =>
-    //   obs.subscribe(res => this.results = res))
-
-
-
-    // ).subscribe(q => {
-    //   this.service
-    //     .fetchAlbumSearchResults(q)
-    //     .subscribe({
-    //       next: res => this.results = res,
-    //       error: error => this.message = error.message,
-    //     })
-    // })
   }
 
   searchAlbums(query = 'batman') {
