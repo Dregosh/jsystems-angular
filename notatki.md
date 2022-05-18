@@ -106,3 +106,5 @@ https://github.com/manfredsteyer/angular-oauth2-oidc
 ng g s core/services/auth 
 npm i angular-oauth2-oidc --save
 
+## Interceptors
+ng g interceptor core/services/auth/auth

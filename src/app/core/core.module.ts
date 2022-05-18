@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { API_URL } from './tokens';
 
 import { AuthConfig } from 'angular-oauth2-oidc';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth/auth.interceptor';
 
 @NgModule({
   declarations: [],
@@ -15,6 +17,12 @@ import { AuthConfig } from 'angular-oauth2-oidc';
     //   provide: HttpClient,
     //   useClass: MyMuchBetterAndAwesomeHttpClient
     // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      // Cannot mix multi providers and regular providers
+      multi:true
+    },
     {
       provide: AuthConfig,
       useValue: environment.authConfig
