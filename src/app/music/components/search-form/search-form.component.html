@@ -10,12 +10,17 @@
     <button class="btn btn-outline-secondary" type="submit">Search</button>
   </div>
 
-  <p class="text-danger" *ngIf="queryForm.get('query')?.hasError('required')">
-    Field is required
-  </p>
+  <ng-container *ngIf="queryForm.get('query') as field">
+    <p class="text-danger" *ngIf="field.hasError('required')">
+      Field is required
+    </p>
 
-  <p class="text-danger" *ngIf="queryForm.get('query')?.getError('minlength')">
-    Minimum length is {{queryForm.get('query')?.getError('minlength').requiredLength}} characters
-  </p>
+    <p class="text-danger" *ngIf="field.getError('minlength') as error">
+      Minimum length is {{ error.requiredLength }} characters
+    </p>
 
+    <p class="text-danger" *ngIf="field.getError('censor') as error">
+      Cannot contain "{{ error.badword }}""
+    </p>
+  </ng-container>
 </form>
