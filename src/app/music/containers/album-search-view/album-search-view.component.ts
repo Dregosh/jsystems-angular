@@ -29,7 +29,13 @@ export class AlbumSearchViewComponent implements OnInit {
       filter((q: any): q is string => typeof q === 'string'),
       tap(q => { this.query = q }),
     ).subscribe(q => {
-      this.searchAlbums(q)
+
+      this.service
+        .fetchAlbumSearchResults(q)
+        .subscribe({
+          next: res => this.results = res,
+          error: error => this.message = error.message,
+        })
     })
   }
 
@@ -39,12 +45,5 @@ export class AlbumSearchViewComponent implements OnInit {
       relativeTo: this.route,
       queryParams: { q: query }
     })
-
-    this.service
-      .fetchAlbumSearchResults(query)
-      .subscribe({
-        next: res => this.results = res,
-        error: error => this.message = error.message,
-      })
   }
 }
