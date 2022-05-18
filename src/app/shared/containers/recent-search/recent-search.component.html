@@ -3,8 +3,10 @@
     Recent
   </button>
   <ul class="dropdown-menu show bg-dark">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another </a></li>
-    <li><a class="dropdown-item" href="#">Something</a></li>
+    <li>
+      <a class="dropdown-item" href="#" *ngFor="let query of queries">{{
+        query
+      }}</a>
+    </li>
   </ul>
 </div>

@@ -8,7 +8,15 @@ import { MusicApiService } from '../music-api/music-api.service';
 })
 export class MusicSearchService {
 
+  queries: string[] = []
+
+  getQueries(){
+    return this.queries
+  }
+
   searchAlbums(query: string): Observable<Album[]> {
+    this.queries.push(query)
+
     return this.service.fetchAlbumSearchResults(query)
   }
 
