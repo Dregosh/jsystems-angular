@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, placki } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, Observable, withLatestFrom } from 'rxjs';
 
 @Component({
   selector: 'app-search-form',
@@ -70,20 +70,20 @@ export class SearchFormComponent implements OnInit {
   ngOnInit(): void {
     const field = this.queryForm.get('query')!;
 
+
+    const validChanges = field.statusChanges
+      .pipe(filter(status => status === 'VALID'))
+
     const valueChanges = field.valueChanges
 
-    valueChanges.pipe(
-      debounceTime(500),
-      // Check Type
+    validChanges.pipe(
+      withLatestFrom(valueChanges),
+      map((_, value) => value),
       filter(isString),
-
-      // length >= 3
-      filter(query => query.length >= 3),
-
-      // no duplicates!
+      debounceTime(500),
       distinctUntilChanged(/* compFn? */),
-
-    ).subscribe(this.search)
+    )
+      .subscribe(this.search)
 
   }
 
