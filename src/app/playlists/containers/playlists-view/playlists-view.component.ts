@@ -13,7 +13,7 @@ export class PlaylistsViewComponent implements OnInit {
   playlists: Playlist[] = [
     {
       id: '123',
-      name: "Playlista 123",
+      name: "Playlista 123 <h1>Pwnd!</h1>",
       public: false,
       description: 'top playlist'
     }, {

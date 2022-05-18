@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { API_URL } from './core/tokens';
 import { HttpClientModule } from '@angular/common/http';
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -16,11 +18,12 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     // SuperHiperDataGridDatePicker
+    OAuthModule.forRoot(),
+    CoreModule.forRoot(environment.api_url),
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
   ],
   providers: [
     // {
