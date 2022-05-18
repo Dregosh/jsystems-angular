@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, placki } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,11 @@ export class SearchFormComponent implements OnInit {
 
   @Output() search = new EventEmitter<string>();
 
-  constructor() { }
+  constructor() {
+
+    // (window as any).form = this.queryForm
+    window.form = this.queryForm
+  }
 
   submit() {
     const query = this.queryForm.value['query']
@@ -22,6 +26,21 @@ export class SearchFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
+}
+
+
+// Ambient Type Declarations
+
+declare module '@angular/core'{
+  export const placki = 123
+}
+
+// Interface Declaration Merging 
+declare global {
+  interface Window {
+    form: FormGroup
+  }
 }
