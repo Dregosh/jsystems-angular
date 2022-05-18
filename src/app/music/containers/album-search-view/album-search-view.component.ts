@@ -40,7 +40,6 @@ export class AlbumSearchViewComponent implements OnInit {
   }
 
   searchAlbums(query = 'batman') {
-
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { q: query }

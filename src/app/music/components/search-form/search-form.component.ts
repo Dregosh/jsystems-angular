@@ -34,7 +34,7 @@ export class SearchFormComponent implements OnInit {
           } : null)
           observer.complete()
 
-        }, 2000)
+        }, 300)
 
         /* Destructor - on:Unsubscribe / on:Complete */
         return () => {
@@ -58,7 +58,10 @@ export class SearchFormComponent implements OnInit {
   //  or:
 
   @Input() set query(q: string) {
-    this.queryForm.get('query')?.setValue(q)
+    (this.queryForm.get('query') as FormControl)?.setValue(q, {
+      emitEvent: false, // Dont search!
+      // onlySelf: true
+    })
   }
 
   @Output() search = new EventEmitter<string>();
@@ -86,7 +89,7 @@ export class SearchFormComponent implements OnInit {
       withLatestFrom(valueChanges),
       map(([/* status */, value]) => value),
       filter(isString),
-      debounceTime(500),
+      debounceTime(300),
       distinctUntilChanged(/* compFn? */),
     )
       .subscribe(this.search)
