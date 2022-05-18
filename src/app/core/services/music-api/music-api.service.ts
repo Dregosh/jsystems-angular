@@ -5,7 +5,7 @@ import { API_URL } from '../../tokens';
 import { HttpClient } from '@angular/common/http'
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
-import { Album } from '../../model/Search';
+import { Album, AlbumSearchResponse, PagingObject } from '../../model/Search';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class MusicApiService {
   fetchAlbumSearchResults(query = '') {
     console.log(this.api_url);
 
-    const obs = this.http.get<Album[]>(this.api_url + 'search', {
+    const obs = this.http.get<AlbumSearchResponse>(this.api_url + 'search', {
       params: {
         type: 'album', query
       },
