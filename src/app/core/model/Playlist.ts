@@ -6,21 +6,59 @@ interface Track {
   duration_ms: number
 }
 
+interface Episode {
+  id: string;
+  name: string;
+  type: "episode";
+  duration_ms: number
+}
+
 
 export interface Playlist {
   id: string;
   name: string;
+  type: "playlist";
   public: boolean;
   description: string;
   tracks?: Track[]
 }
 
 
-function showInfo(res: Playlist | Track) {
+function showInfo3(res: Playlist | Track | Episode) {
+  switch (res.type) {
+    case 'episode':
+      return `${res.duration_ms}`;
+    case 'track':
+      return `${res.duration_ms}`;
+    case 'playlist':
+      return `${res.name} (${res.tracks?.length ?? 0} tracks)`
+    default:
+      checkExhaustivness(res)
+  }
+}
 
-  return `${res.duration_ms}`
+function showInfo2(res: Playlist | Track | Episode) {
+  if (res.type === 'episode') {
+    return `${res.duration_ms}`
+  }
+  if (res.type === 'track') {
+    return `${res.duration_ms}`
+  }
+  if (res.type === 'playlist') {
+    return `${res.name} (${res.tracks?.length ?? 0} tracks)`
+  }
+  checkExhaustivness(res)
+}
 
-  return `${res.name} (${res.tracks?.length ?? 0} tracks)`
+
+function showInfo(res: Playlist | Track | Episode) {
+  if ('duration_ms' in res) {
+    return `${res.duration_ms}`
+  }
+  if ('public' in res) {
+    return `${res.name} (${res.tracks?.length ?? 0} tracks)`
+  }
+  checkExhaustivness(res)
 }
 
 

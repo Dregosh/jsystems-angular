@@ -15,16 +15,19 @@ export class PlaylistsViewComponent implements OnInit {
       id: '123',
       name: "Playlista 123 <h1>Pwnd!</h1>",
       public: false,
+      type:'playlist',
       description: 'top playlist'
     }, {
       id: '234',
       name: "Playlista 234",
       public: true,
+      type:'playlist',
       description: 'best playlist ever'
     }, {
       id: '345',
       name: "Playlista 345",
       public: false,
+      type:'playlist',
       description: 'fav playlist'
     }
   ]
