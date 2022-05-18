@@ -3,13 +3,18 @@ import { CommonModule } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { API_URL } from './tokens';
 
+import { AuthConfig } from 'angular-oauth2-oidc';
+
 @NgModule({
   declarations: [],
   imports: [
     CommonModule
   ],
   providers: [
-
+    {
+      provide: AuthConfig,
+      useValue: environment.authConfig
+    }
   ]
 })
 export class CoreModule {

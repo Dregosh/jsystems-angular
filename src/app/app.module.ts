@@ -18,8 +18,8 @@ import { environment } from 'src/environments/environment';
   ],
   imports: [
     // SuperHiperDataGridDatePicker
-    OAuthModule.forRoot(),
     CoreModule.forRoot(environment.api_url),
+    OAuthModule.forRoot(),
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

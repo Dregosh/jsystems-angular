@@ -100,3 +100,9 @@ ng g c music/components/album-card -m music
 ## Services
 
 ng g s core/services/music-api --flat false 
+
+## Auth 
+https://github.com/manfredsteyer/angular-oauth2-oidc
+ng g s core/services/auth 
+npm i angular-oauth2-oidc --save
+
