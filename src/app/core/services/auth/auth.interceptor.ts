@@ -69,7 +69,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
 // Function Type Guards
 function isSpotifyErrorResponse(res: any): res is SpotifyErrorResponse {
-  return ('error' in res
+  return (res && 'error' in res
     && 'status' in res.error
     && 'message' in res.error)
 }
