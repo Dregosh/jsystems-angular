@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, placki } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
 
 @Component({
@@ -9,8 +9,16 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs';
 })
 export class SearchFormComponent implements OnInit {
 
+  censor(control: AbstractControl): ValidationErrors | null {
+    return null
+  }
+
   queryForm = new FormGroup({
-    'query': new FormControl('batman', [])
+    'query': new FormControl('batman', [
+      Validators.required,
+      Validators.minLength(3),
+      this.censor
+    ])
   })
 
   @Output() search = new EventEmitter<string>();
@@ -32,9 +40,7 @@ export class SearchFormComponent implements OnInit {
     const valueChanges = field.valueChanges
 
     valueChanges.pipe(
-      // once in 500ms  ( 400ms - Doherty Treshold )
       debounceTime(500),
-
       // Check Type
       filter(isString),
 
@@ -44,18 +50,7 @@ export class SearchFormComponent implements OnInit {
       // no duplicates!
       distinctUntilChanged(/* compFn? */),
 
-    )
-      // .subscribe(console.log)
-
-      // .subscribe({
-      //   next: res => this.search.next(res),
-      //   error: res => this.search.error(res),
-      //   complete: () => this.search.complete(),
-      // })
-
-      // Subject Chaining
-      .subscribe(this.search)
-
+    ).subscribe(this.search)
 
   }
 
