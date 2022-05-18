@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { concat, from, Observable, of, startWith, Subject } from 'rxjs';
+import { BehaviorSubject, catchError, concat, distinctUntilChanged, EMPTY, from, Observable, of, ReplaySubject, startWith, Subject, switchMap } from 'rxjs';
+import { mockAlbums } from '../../mocks/mockAlbums';
 import { Album } from '../../model/Search';
 import { MusicApiService } from '../music-api/music-api.service';
 
@@ -8,34 +9,31 @@ import { MusicApiService } from '../music-api/music-api.service';
 })
 export class MusicSearchService {
 
-  queries: string[] = []
-  queryChange = new Subject<string>()
+  // queries: string[] = []
+  // queryChange = new Subject<string>()
 
-  results: Album[] = []
-  resultsChanges = new Subject<Album[]>()
+  private queries = new ReplaySubject<string>(5/* , 10_000 */)
+  readonly queryChange = this.queries.asObservable()
 
-  getQueries() {
-    return this.queryChange.pipe(
-      startWith(...this.queries)
-    )
-    // return concat(
-    //   from(this.queries),
-    //   this.queryChange
-    // )
-  }
+  private results = new BehaviorSubject<Album[]>(mockAlbums)
+  readonly resultsChanges = this.results.asObservable()
+
 
   searchAlbums(query: string): Observable<Album[]> {
-    this.queries.push(query)
-    this.queries = this.queries.slice(-5)
-    this.queryChange.next(query)
+    // this.results.getValue() // Sync get value - always!!
 
-    this.service.fetchAlbumSearchResults(query).subscribe(res => {
-      this.results = res;
-      this.resultsChanges.next(res)
-    })
-
-    return this.resultsChanges.asObservable()
+    this.queries.next(query)
+    return this.resultsChanges
   }
 
-  constructor(protected service: MusicApiService) { }
+  constructor(protected service: MusicApiService) {
+    this.queries.pipe(
+      distinctUntilChanged(),
+      switchMap(q => this.service.fetchAlbumSearchResults(q)
+        .pipe(catchError(error =>
+          // TODO: Global Error Handler
+          EMPTY
+        )))
+    ).subscribe(this.results)
+  }
 }

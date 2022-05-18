@@ -21,7 +21,7 @@ export class RecentSearchComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.service.getQueries().subscribe((query) => {
+    this.service.queryChange.subscribe((query) => {
       this.queries.push(query)
       this.queries = this.queries.slice(-5)
       this.cdr.markForCheck()
