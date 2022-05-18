@@ -11,6 +11,10 @@ import { AuthConfig } from 'angular-oauth2-oidc';
     CommonModule
   ],
   providers: [
+    // {
+    //   provide: HttpClient,
+    //   useClass: MyMuchBetterAndAwesomeHttpClient
+    // },
     {
       provide: AuthConfig,
       useValue: environment.authConfig

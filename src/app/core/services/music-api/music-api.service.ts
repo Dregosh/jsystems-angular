@@ -21,7 +21,7 @@ export class MusicApiService {
 
   fetchAlbumSearchResults(query = '') {
 
-    return this.http.get<AlbumSearchResponse>(//
+    return this.http.get<unknown>(//
       this.api_url + 'search', {
       params: {
         type: 'album', query
@@ -30,7 +30,10 @@ export class MusicApiService {
         Authorization: 'Bearer ' + this.auth.getToken()
       }
     }).pipe(
-      map(res => res.albums.items),
+      map(res => {
+        assertAlbumSearchResponse(res)
+        return res.albums.items
+      }),
       catchError((error: unknown) => {
 
         if (!(error instanceof HttpErrorResponse)) {
@@ -50,6 +53,12 @@ export class MusicApiService {
 
 
 // https://github.com/colinhacks/zod#shape
+
+function assertAlbumSearchResponse(res: any): asserts res is AlbumSearchResponse {
+  if (!('albums' in res && 'items' in res.albums && Array.isArray(res.albums.items))) {
+    throw new Error('Unexpected Server response')
+  }
+}
 
 // Function Type Guards
 function isSpotifyErrorResponse(res: any): res is SpotifyErrorResponse {
