@@ -26,7 +26,19 @@ export class SearchFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const field = this.queryForm.get('query')!;
 
+    const valueChanges = field.valueChanges
+
+    valueChanges.pipe(
+      // length >= 3
+
+      // no duplicates!
+
+      // once in 500ms  ( 400ms - Doherty Treshold )
+
+    )
+      .subscribe(console.log)
   }
 
 }
@@ -34,7 +46,7 @@ export class SearchFormComponent implements OnInit {
 
 // Ambient Type Declarations
 
-declare module '@angular/core'{
+declare module '@angular/core' {
   export const placki = 123
 }
 
