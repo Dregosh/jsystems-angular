@@ -14,43 +14,30 @@ import { MusicSearchService } from 'src/app/core/services/music-search/music-sea
 export class AlbumSearchViewComponent implements OnInit {
 
   message = ''
-  results: Album[] = []
-  query = ''
+
+  queryChanges = this.route.queryParamMap.pipe(
+    map(qm => qm.get('q')),
+    filter((q: any): q is string => typeof q === 'string'),
+  )
+
+  resultsChanges = this.queryChanges.pipe(
+    switchMap(query => this.service.fetchAlbumSearchResults(query)),
+  )
 
   constructor(
-    protected service: MusicSearchService,
+    // protected service: MusicSearchService,
+    protected service: MusicApiService,
     protected router: Router,
     protected route: ActivatedRoute,
   ) { }
 
-  ngOnInit(): void {
-
-    const queryChanges = this.route.queryParamMap.pipe(
-      map(qm => qm.get('q')),
-      filter((q: any): q is string => typeof q === 'string'),
-    )
-    queryChanges.subscribe(q => { this.query = q })
-
-
-    const resultsChanges = queryChanges.pipe(
-      // take(1)
-      // takeWhile(fn)
-      // takeUntil(obs)
-      takeUntil(this.sub),
-      switchMap(query => this.service.searchAlbums(query)),
-    )
-
-    resultsChanges.subscribe(res => this.results = res)
-  }
-
-  sub = new Subject()
-
-  ngOnDestroy(): void {
-    this.sub?.next(null)
-  }
-
+  ngOnInit(): void { }
 
   searchAlbums(query = 'batman') {
+
+    // Replace obserbable - AsyncPipe will switch!!
+    this.resultsChanges = this.service.fetchAlbumSearchResults(query)
+
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { q: query }

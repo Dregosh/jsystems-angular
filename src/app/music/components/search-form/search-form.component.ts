@@ -57,7 +57,7 @@ export class SearchFormComponent implements OnInit {
   // ngOnChanges(changes: SimpleChanges): void {
   //  or:
 
-  @Input() set query(q: string) {
+  @Input() set query(q: string | null) {
     (this.queryForm.get('query') as FormControl)?.setValue(q, {
       emitEvent: false, // Dont search!
       // onlySelf: true

@@ -1,16 +1,20 @@
 <!-- .row*2>.col -->
 <div class="row">
   <div class="col">
-    <app-search-form 
-    [query]="query"
-    (search)="searchAlbums($event)"></app-search-form>
+    <app-search-form
+      [query]="queryChanges | async"
+      (search)="searchAlbums($event)"
+    ></app-search-form>
   </div>
 </div>
 
 <div class="row">
   <div class="col">
     <p *ngIf="message" class="alert alert-danger mb-2">{{ message }}</p>
+
+    <ng-container *ngIf="resultsChanges | async as albums">
     
-    <app-results-grid [results]="results"></app-results-grid>
+      <app-results-grid [results]="albums"></app-results-grid>
+    </ng-container>
   </div>
 </div>
