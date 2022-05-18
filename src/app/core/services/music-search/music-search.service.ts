@@ -27,6 +27,9 @@ export class MusicSearchService {
   }
 
   constructor(protected service: MusicApiService) {
+
+    (window as any).subject = this.results
+    
     this.queries.pipe(
       distinctUntilChanged(),
       switchMap(q => this.service.fetchAlbumSearchResults(q)

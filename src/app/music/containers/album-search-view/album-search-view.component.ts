@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { concatAll, concatMap, exhaustMap, filter, map, mergeAll, mergeMap, switchMap, tap } from 'rxjs';
+import { concatAll, concatMap, exhaustMap, filter, map, mergeAll, mergeMap, Subscription, switchMap, tap } from 'rxjs';
 import { mockAlbums } from 'src/app/core/mocks/mockAlbums';
 import { Album } from 'src/app/core/model/Search';
 import { MusicApiService } from 'src/app/core/services/music-api/music-api.service';
@@ -36,8 +36,15 @@ export class AlbumSearchViewComponent implements OnInit {
       switchMap(query => this.service.searchAlbums(query)),
     )
 
-    resultsChanges.subscribe(res => this.results = res)
+    this.sub = resultsChanges.subscribe(res => this.results = res)
   }
+
+  sub?:Subscription
+
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe()
+  }
+
 
   searchAlbums(query = 'batman') {
     this.router.navigate([], {
