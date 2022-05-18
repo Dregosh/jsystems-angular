@@ -70,7 +70,6 @@ export class SearchFormComponent implements OnInit {
   ngOnInit(): void {
     const field = this.queryForm.get('query')!;
 
-
     const validChanges = field.statusChanges
       .pipe(filter(status => status === 'VALID'))
 
@@ -78,7 +77,7 @@ export class SearchFormComponent implements OnInit {
 
     validChanges.pipe(
       withLatestFrom(valueChanges),
-      map((_, value) => value),
+      map(([_, value]) => value),
       filter(isString),
       debounceTime(500),
       distinctUntilChanged(/* compFn? */),
