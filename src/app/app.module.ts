@@ -22,8 +22,10 @@ import { environment } from 'src/environments/environment';
     OAuthModule.forRoot(),
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule,
+    // PlackiModuleWithRotung
     SharedModule,
+    // TestMocksProvidersModule // override previous
+    AppRoutingModule,
   ],
   providers: [
     // {

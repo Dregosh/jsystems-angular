@@ -21,7 +21,7 @@ import { AuthInterceptor } from './services/auth/auth.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       // Cannot mix multi providers and regular providers
-      multi:true
+      multi: true
     },
     {
       provide: AuthConfig,
