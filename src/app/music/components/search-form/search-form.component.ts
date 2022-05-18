@@ -22,11 +22,13 @@ export class SearchFormComponent implements OnInit {
     (control: AbstractControl): Observable<ValidationErrors | null> => {
       const hasError = String(control.value).includes(badword)
 
+      // return this.http.get(..).pipe(map(...))
+
       return new Observable((observer) => {
-        console.log('Subscribed');
+        // console.log('Subscribed');
 
         const handle = setTimeout(() => {
-          console.log('Next');
+          // console.log('Next');
           observer.next(hasError ? {
             'censor': { badword }
           } : null)
@@ -36,7 +38,7 @@ export class SearchFormComponent implements OnInit {
 
         /* Destructor - on:Unsubscribe / on:Complete */
         return () => {
-          console.log('Unsubscribe');
+          // console.log('Unsubscribe');
           clearTimeout(handle)
         }
       })
