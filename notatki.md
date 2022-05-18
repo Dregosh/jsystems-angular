@@ -1,3 +1,4 @@
+
 ## Instalacje
 
 node -v
@@ -16,6 +17,13 @@ Menu -> Help -> About
 Google Chrome
 chrome://version
 101.0.4951.64
+
+## NPM + Semver
+https://semver.org/
+https://semver.npmjs.com/
+
+npm i 
+npm ci 
 
 ## Angular CLI
 
