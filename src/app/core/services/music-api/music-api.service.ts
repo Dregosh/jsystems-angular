@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { mockAlbums } from '../../mocks/mockAlbums';
 import { API_URL } from '../../tokens';
 import { HttpClient } from '@angular/common/http'
-import { Observable, Subscription } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { Album, AlbumSearchResponse, PagingObject } from '../../model/Search';
 
@@ -19,17 +19,18 @@ export class MusicApiService {
   ) { }
 
   fetchAlbumSearchResults(query = '') {
-    console.log(this.api_url);
 
-    const obs = this.http.get<AlbumSearchResponse>(this.api_url + 'search', {
+    return this.http.get<AlbumSearchResponse>(//
+      this.api_url + 'search', {
       params: {
         type: 'album', query
       },
       headers: {
         Authorization: 'Bearer ' + this.auth.getToken()
       }
-    })
-
-    return obs
+    }).pipe(
+      // ... transform ..,
+      map(res => res.albums.items)
+    )
   }
 }

@@ -17,11 +17,8 @@ export class AlbumSearchViewComponent implements OnInit {
     this.service
       .fetchAlbumSearchResults(query)
       .subscribe({
-        next: res => {
-
-          this.results = res.albums.items
-        },
-        error: res => this.message = (res.error.error.message),
+        next: res => this.results = res,
+        error: res => this.message = res.error.error.message,
         complete: () => console.log('complete'),
       })
 
