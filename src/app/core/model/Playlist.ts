@@ -3,6 +3,7 @@ interface Track {
   id: string;
   name: string;
   type: "track";
+  duration_ms: number
 }
 
 
@@ -13,6 +14,35 @@ export interface Playlist {
   description: string;
   tracks?: Track[]
 }
+
+
+function showInfo(res: Playlist | Track) {
+
+  return `${res.duration_ms}`
+
+  return `${res.name} (${res.tracks?.length ?? 0} tracks)`
+}
+
+
+function getInfo(s: string | number | boolean) {
+  if (typeof s === 'string') {
+    return s.toLocaleLowerCase()
+  } else if (typeof s === 'number') {
+    return s.toFixed(2)
+  } else if (typeof s === 'boolean') {
+    return s ? 'yes' : 'no'
+  } else {
+    // const _never: never = s // never
+    // throw new Error('Unexpected result')
+    checkExhaustivness(s)
+  }
+}
+
+function checkExhaustivness(res: never): never {
+  throw new Error('Unexpected result')
+}
+
+
 
 // const p = {} as any
 
